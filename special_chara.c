@@ -11,7 +11,7 @@ int print_pointer(va_list arg)
 	unsigned long value;
 	int i, hex_digit;
 	char *str = "(nil)";
-		
+	
 	value = (unsigned long)va_arg(arg, void *);
 	if (value)
 	{
@@ -19,8 +19,8 @@ int print_pointer(va_list arg)
 		putchar('x');
 		for (i = 11; i >= 0; i--)
 		{
-    			hex_digit = (value >> (i * 4)) & 0xf;
-   			putchar("0123456789abcdef"[hex_digit]);
+			hex_digit = (value >> (i * 4)) & 0xf;
+			putchar("0123456789abcdef"[hex_digit]);
 		}
 		return (14);
 	}
