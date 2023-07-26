@@ -1,48 +1,51 @@
 #include "main.h"
 
 /**
- * _printf - function that prints formatted output
- * @format: output format
+ * _printf - print function
+ * @format: is a character string
  *
- * Return: number of characters printed
+ * Return: the number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	int print_char = 0;
-	va_list arg_list;
-
-	if (format == NULL)
+	va_list list;
+	int i = 0, j, str_len = 0, flag = 0, array_len;
+	prt format_funcs[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'%', print_mod},
+		{'i', print_int},
+		{'d', print_int},
+		{'b', print_binary},
+		{'u', print_udecimal},
+		{'S', print_ustr},
+		{'p', print_pointer}
+	};
+	/* check for format = NULL OR format = "%" */
+	if (format == NULL || (format[i] == '%' && format[i + 1] == '\0'))
 		return (-1);
-
-	va_start(arg_list, format);
-	while (*format)
+	va_start(list, format);
+	while (format[i] != '\0')
 	{
-		if (*format == '%')
-		{
-			format++;
-			if (*format == 'c')
-			{
-				char c = va_arg(arg_list, int);
-
-				write(1, &c, 1);
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(arg_list, char*);
-				int str_len = 0;
-
-				while (str[str_len] != '\0')
-					str_len++;
-				write(1, str, str_len);
-			}
-			else if (*format == '%')
-				write(1, format, 1);
-		}
+		if (format[i] != '%') /* if plain string */
+			putchar(format[i]), str_len++;
 		else
-			write(1, format, 1);
-		print_char++;
-		format++;
+		{
+			j = 0, i++;
+			array_len = sizeof(format_funcs) / sizeof(format_funcs[0]);
+			while (j < array_len)
+			{
+				if (format[i] == format_funcs[j].symbol)
+				{
+					str_len += format_funcs[j].print(list);
+					flag = 1; /* indicates it was found */
+					break;
+				} j++;
+			}
+			if (flag == 0) /* if it wasn't found, print '%' as string */
+				putchar(format[--i]), str_len++;
+		} i++;
 	}
-	va_end(arg_list);
-	return (print_char);
+	va_end(list);
+	return (str_len);
 }
