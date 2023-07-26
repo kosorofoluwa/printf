@@ -11,7 +11,7 @@ int print_pointer(va_list arg)
 	unsigned long value;
 	int i, hex_digit;
 	char *str = "(nil)";
-	
+
 	value = (unsigned long)va_arg(arg, void *);
 	if (value)
 	{
