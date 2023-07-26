@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_int - prints an integer
+ * print_pointer- prints a pointer
  * @arg: argument to be printed
  *
  * Return: 0
