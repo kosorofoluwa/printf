@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * binary_len - finds the length of the resulting binary
- * @num: number to be converted to binary
+ * binary_len - Finds the length of the resulting binary.
+ * @num: The number to be converted to binary.
  *
- * Return: length of the binary
+ * Return: The length of the binary.
  */
 int binary_len(int num)
 {
@@ -25,19 +25,19 @@ int binary_len(int num)
 	return (len);
 }
 /**
- * print_binary - converts an integer to a binary
- * @arg: argument to be printed
+ * binary_printer - Print function that converts an integer to binary and prints it.
+ * @arg: The argument to be printed.
  *
- * Return: count of characters
+ * Return: The printed length of characters.
  */
-int print_binary(va_list arg)
+int binary_printer(va_list arg)
 {
 	int num = va_arg(arg, int), i;
 	int len;
 	char *str = NULL;
 
 	len = binary_len(num);
-	str = print_binary_helper(str, len, num);
+	str = binary_printer_helper(str, len, num);
 	if (!str)
 		return (0);
 
@@ -49,14 +49,14 @@ int print_binary(va_list arg)
 }
 
 /**
- * print_binary_helper - helper function
- * @str: pointer that will contain the resulting binary string
- * @len: length of str
- * @num: number to be converted to binary
+ * binary_printer_helper - Helper function for binary_printer that converts a number to a binary string.
+ * @str: Pointer that will contain the resulting binary string.
+ * @len: Length of str.
+ * @num: Number to be converted to binary.
  *
- * Return: length of the binary
+ * Return: Pointer to the binary string.
  */
-char *print_binary_helper(char *str, int len, int num)
+char *binary_printer_helper(char *str, int len, int num)
 {
 	int i, k;
 

@@ -1,30 +1,36 @@
 #include "main.h"
 
 /**
- * _printf - print function
- * @format: is a character string
+ * _printf - function that handles formatted output.
+ * @format: The character string containing the format specifier.
  *
- * Return: the number of characters printed
+ * Return: The number of characters printed.
  */
 int _printf(const char *format, ...)
 {
-	va_list list;
+	va_list arg;
 	int i = 0, j, str_len = 0, flag = 0, array_len;
-	prt format_funcs[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'%', print_mod},
-		{'i', print_int},
-		{'d', print_int},
-		{'b', print_binary},
-		{'u', print_udecimal},
+	replace_specifier format_funcs[] = {
+		{'c', chara_print},
+		{'s', str_printer},
+		{'%', mod_printer},
+		{'i', int_printer},
+		{'d', int_printer},
+		{'b', binary_printer},
+		{'u', udecimal_printer},
 		{'S', print_ustr},
-		{'p', print_pointer}
+		{'p', print_pointer},
+		{"%o", printf_oct},
+		{"%x", printf_hex},
+		{"%X", printf_HEX},
+		{"%R", rot13_printer},
+		{"%r", srev_printer},
+		
 	};
 	/* check for format = NULL OR format = "%" */
 	if (format == NULL || (format[i] == '%' && format[i + 1] == '\0'))
 		return (-1);
-	va_start(list, format);
+	va_start(arg, format);
 	while (format[i] != '\0')
 	{
 		if (format[i] != '%') /* if plain string */

@@ -1,24 +1,24 @@
 #include "main.h"
 
 /**
- * print_char - prints a ASCII character
- * @arg: argument to be printed
+ * chara_print - Print function that handles printing an ASCII character.
+ * @arg: The argument to be printed.
  *
- * Return: count of characters
+ * Return: The printed length of characters (always 1).
  */
-int print_char(va_list arg)
+int chara_print(va_list arg)
 {
 	putchar(va_arg(arg, int));
 	return (1);
 }
 
 /**
- * print_str - prints a string
- * @arg: argument to be printed
+ * str_printer - Print function that handles printing a string.
+ * @arg: The argument to be printed.
  *
- * Return: count of characters
+ * Return: The printed length of characters.
  */
-int print_str(va_list arg)
+int str_printer(va_list arg)
 {
 	char *string = va_arg(arg, char *);
 	int i;
@@ -36,7 +36,7 @@ int print_str(va_list arg)
  * print_ustr - prints a string
  * @arg: argument to be printed
  *
- * Return: count of characters
+ * Return: printed_length of characters
  */
 int print_ustr(va_list arg)
 {
@@ -70,12 +70,12 @@ int print_ustr(va_list arg)
 }
 
 /**
- * print_mod - prints modulus
+ * mod_printer - prints modulus
  * @arg: argument to be printed
  *
- * Return: count of characters
+ * Return: printed_length of characters
  */
-int print_mod(va_list arg)
+int mod_printer(va_list arg)
 {
 	(void)arg;
 

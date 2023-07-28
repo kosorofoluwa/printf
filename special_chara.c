@@ -1,25 +1,25 @@
 #include "main.h"
 
 /**
- * print_pointer- prints a pointer
- * @arg: argument to be printed
+ * print_pointer- Print function that handles printing a pointer address in hexadecimal format.
+ * @arg: The argument to be printed.
  *
- * Return: 0
+ * Return: The printed length of characters.
  */
 int print_pointer(va_list arg)
 {
-	unsigned long value;
+	unsigned long val;
 	int i, hex_digit;
 	char *str = "(nil)";
 
-	value = (unsigned long)va_arg(arg, void *);
-	if (value)
+	val = (unsigned long)va_arg(arg, void *);
+	if (val)
 	{
 		putchar('0');
 		putchar('x');
 		for (i = 11; i >= 0; i--)
 		{
-			hex_digit = (value >> (i * 4)) & 0xf;
+			hex_digit = (val >> (i * 4)) & 0xf;
 			putchar("0123456789abcdef"[hex_digit]);
 		}
 		return (14);

@@ -1,43 +1,43 @@
 #include "main.h"
 
 /**
- * print_int - prints an integer
- * @arg: argument to be printed
+ * int_printer - Print function that handles printing a signed integer.
+ * @arg: The argument to be printed.
  *
- * Return: 0
+ * Return: The printed length of characters.
  */
-int print_int(va_list arg)
+int int_printer(va_list arg)
 {
-	int value = va_arg(arg, int);
-	unsigned int neg_value;
+	int val = va_arg(arg, int);
+	unsigned int neg_val;
 
-	if (value < 0)
+	if (val < 0)
 	{
 		putchar('-');
-		/* to take care of large unsigned int values */
-		neg_value = value * -1;
-		return (1 + int_helper(neg_value));
+		/* to take care of large unsigned int vals */
+		neg_val = val * -1;
+		return (1 + int_helper(neg_val));
 	}
-	return (int_helper(value));
+	return (int_helper(val));
 }
 
 /**
- * int_helper - helper function
- * @value: argument to be printed
+ * int_helper - Helper function for int_printer that prints a positive integer.
+ * @val: The argument to be printed.
  *
- * Return: chars printed
+ * Return: The number of characters printed.
  */
-int int_helper(unsigned int value)
+int int_helper(unsigned int val)
 {
-	unsigned int a = value, count = 0;
+	unsigned int a = val, printed_length = 0;
 
-	if (value < 9)
+	if (val < 9)
 	{
 		putchar((a % 10) + '0');
 		return (1);
 	}
-	count = 1 + int_helper(value / 10);
+	printed_length = 1 + int_helper(val / 10);
 
 	putchar((a % 10) + '0');
-	return (count);
+	return (printed_length);
 }

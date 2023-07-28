@@ -17,24 +17,33 @@ typedef struct print_format
 {
 	char symbol;
 	int (*print)(va_list arg);
-} prt;
+} replace_specifier;
 
-int print_char(va_list arg);
-int print_mod(va_list arg);
+int chara_print(va_list arg);
+int mod_printer(va_list arg);
 int print_void(va_list arg);
 int print_float(va_list arg);
-int print_str(va_list arg);
+int str_printer(va_list arg);
 int _printf(const char *format, ...);
-int print_int(va_list arg);
-int print_binary(va_list arg);
-int int_helper(unsigned int value);
+int int_printer(va_list arg);
+int binary_printer(va_list arg);
+int int_helper(unsigned int val);
 int binary_len(int num);
-int print_udecimal(va_list arg);
-char *print_binary_helper(char *str, int len, int num);
-int print_udecimal(va_list arg);
+int udecimal_printer(va_list arg);
+char *binary_printer_helper(char *str, int len, int num);
+int udecimal_printer(va_list arg);
 int print_ud(int, unsigned long int);
-int print_octal(va_list arg);
+int octal_printer(va_list arg);
 int print_ustr(va_list arg);
 int print_pointer(va_list arg);
+int printf_HEX(va_list arg);
+int printf_hex(va_list arg);
+int printf_oct(va_list arg);
+int rot13_printer(va_list args);
+int printf_hex_aux(unsigned long int num);
+int printf_HEX_aux(unsigned int num);
+int rev_string(char *s);
+int srev_printer(va_list args);
+
 
 #endif
