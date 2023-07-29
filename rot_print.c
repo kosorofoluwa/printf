@@ -22,14 +22,14 @@ int rot13_printer(va_list args)
 		{
 			if (s[i] == alpha[j])
 			{
-				_putchar(beta[j]);
+				putchar(beta[j]);
 				printed_length++;
 				k = 1;
 			}
 		}
 		if (!k)
 		{
-			_putchar(s[i]);
+			putchar(s[i]);
 			printed_length++;
 		}
 	}
