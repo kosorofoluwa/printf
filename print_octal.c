@@ -29,7 +29,7 @@ int printf_oct(va_list arg)
 	}
 	for (i = printed_length - 1; i >= 0; i--)
 	{
-		_putchar(array[i] + '0');
+		putchar(array[i] + '0');
 	}
 	free(array);
 	return (printed_length);
