@@ -20,11 +20,11 @@ int _printf(const char *format, ...)
 		{'u', udecimal_printer},
 		{'S', print_ustr},
 		{'p', print_pointer},
-		{'%o', printf_oct},
-		{'%x', printf_hex},
-		{'%X', printf_HEX},
-		{'%R', rot13_printer},
-		{'%r', srev_printer},
+		{'o', printf_oct},
+		{'x', printf_hex},
+		{'X', printf_HEX},
+		{'R', rot13_printer},
+		{'r', srev_printer},
 		
 	};
 	/* check for format = NULL OR format = "%" */
