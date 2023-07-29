@@ -43,7 +43,7 @@ int _printf(const char *format, ...)
 			{
 				if (format[i] == format_funcs[j].symbol)
 				{
-					str_len += format_funcs[j].print(list);
+					str_len += format_funcs[j].print(arg);
 					flag = 1; /* indicates it was found */
 					break;
 				} j++;
@@ -52,6 +52,6 @@ int _printf(const char *format, ...)
 				putchar(format[--i]), str_len++;
 		} i++;
 	}
-	va_end(list);
+	va_end(arg);
 	return (str_len);
 }
